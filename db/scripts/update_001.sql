@@ -1,21 +1,21 @@
-create table driver(
+create table drivers(
   id serial primary key,
-  name varchar(255),
+  name varchar(255)
 );
 
-create table engine(
+create table engines(
   id serial primary key,
-  name varchar(255),
+  name varchar(255)
 );
 
-create table car(
+create table cars(
   id serial primary key,
-  ame varchar(255),
+  name varchar(255),
   engine_id int not unique references engine(id)
 );
 
-create table history_owner(
+create table cars_drivers(
   id serial primary key,
-  driver_id int not references driver(id),
-  car_id int not references car(id)
+  driver_id int not null references driver(id),
+  car_id int not null references car(id)
 );
