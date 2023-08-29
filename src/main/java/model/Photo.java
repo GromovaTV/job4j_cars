@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-import java.nio.file.Path;
 
 @Entity
 @Table(name = "photos")
@@ -9,9 +8,9 @@ public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Path path;
+    private String path;
 
-    public static Photo of(Path path) {
+    public static Photo of(String path) {
         Photo photo = new Photo();
         photo.setPath(path);
         return photo;
@@ -25,11 +24,19 @@ public class Photo {
         this.id = id;
     }
 
-    public Path getPath() {
+    public String getPath() {
         return path;
     }
 
-    public void setPath(Path path) {
+    public void setPath(String path) {
         this.path = path;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{"
+                + "id=" + id + '\''
+                + ", path='" + path + '\''
+                + '}';
     }
 }

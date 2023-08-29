@@ -10,7 +10,7 @@ public class Brand {
     private int id;
     private String name;
 
-    private static Brand of(String name) {
+    public static Brand of(String name) {
         Brand brand = new Brand();
         brand.setName(name);
         return brand;
@@ -30,5 +30,13 @@ public class Brand {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Brand{"
+                + "id=" + id + '\''
+                + ", name='" + name + '\''
+                + '}';
     }
 }

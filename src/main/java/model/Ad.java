@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,8 @@ public class Ad {
     private int id;
     private String description;
     private boolean sold;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
     @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
@@ -32,9 +35,13 @@ public class Ad {
         ad.setDescription(description);
         ad.setSold(sold);
         ad.setUser(user);
+        ad.setCreated(new Date(System.currentTimeMillis()));
         return ad;
     }
 
+    public void addPhoto(Photo photo) {
+        this.photos.add(photo);
+    }
     public int getId() {
         return id;
     }
@@ -89,5 +96,27 @@ public class Ad {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    @Override
+    public String toString() {
+        return "Ad{"
+                + "id=" + id + '\''
+                + ", description='" + description + '\''
+                + ", sold=" + sold + '\''
+                + ", created=" + created + '\''
+                + ", brand=" + brand + '\''
+                + ", body=" + body + '\''
+                + ", photos=" + photos + '\''
+                + ", user=" + user + '\''
+                + '}';
     }
 }

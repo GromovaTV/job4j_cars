@@ -10,7 +10,7 @@ public class Body {
     private int id;
     private String name;
 
-    private static Body of(String name) {
+    public static Body of(String name) {
         Body body = new Body();
         body.setName(name);
         return body;
@@ -30,5 +30,13 @@ public class Body {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Body{"
+                + "id=" + id + '\''
+                + ", name='" + name + '\''
+                + '}';
     }
 }
