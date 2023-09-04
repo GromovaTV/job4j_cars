@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cars")
-public class Car {
+public class CarTrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,10 +17,10 @@ public class Car {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Driver> drivers = new HashSet<>();
 
-    public static Car of(String name) {
-        Car car = new Car();
-        car.setName(name);
-        return car;
+    public static CarTrade of(String name) {
+        CarTrade carTrade = new CarTrade();
+        carTrade.setName(name);
+        return carTrade;
     }
 
     public int getId() {

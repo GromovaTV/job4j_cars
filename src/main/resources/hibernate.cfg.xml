@@ -17,7 +17,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.jdbc.time_zone">Asia/Tbilisi</property>
         <mapping class="model.Ad" />
-        <mapping class="model.Car" />
+        <mapping class="model.CarTrade" />
         <mapping class="model.Engine" />
         <mapping class="model.Driver" />
         <mapping class="model.Body" />
