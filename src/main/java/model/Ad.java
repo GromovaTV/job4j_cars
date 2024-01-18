@@ -8,22 +8,30 @@ import java.util.List;
 @Entity
 @Table(name = "ads")
 public class Ad {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String description;
+
     private boolean sold;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+
     @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
+
     @ManyToOne
     @JoinColumn(name = "body_id")
     private Body body;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ad_id")
     private List<Photo> photos = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -42,6 +50,7 @@ public class Ad {
     public void addPhoto(Photo photo) {
         this.photos.add(photo);
     }
+
     public int getId() {
         return id;
     }

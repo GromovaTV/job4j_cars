@@ -1,48 +1,48 @@
-create table drivers(
+create table if not exists drivers(
   id serial primary key,
   name varchar(255)
 );
 
-create table engines(
+create table if not exists engines(
   id serial primary key,
   name varchar(255)
 );
 
-create table cars(
+create table if not exists cars(
   id serial primary key,
   name varchar(255),
-  engine_id int not unique references engine(id)
+  engine_id int not null unique references engines(id)
 );
 
-create table cars_drivers(
+create table if not exists cars_drivers(
   id serial primary key,
-  driver_id int not null references driver(id),
-  car_id int not null references car(id)
+  driver_id int not null references drivers(id),
+  car_id int not null references cars(id)
 );
 
-create table brands(
-  id serial primary key,
-  name varchar(255)
-);
-
-create table bodies(
+create table if not exists brands(
   id serial primary key,
   name varchar(255)
 );
 
-create table photos(
+create table if not exists bodies(
+  id serial primary key,
+  name varchar(255)
+);
+
+create table if not exists photos(
   id serial primary key,
   path text
 );
 
-create table users (
+create table if not exists users (
   id serial primary key,
-  name varchar(2000),
-  email TEXT UNIQUE,
-  password TEXT
+  name varchar(200),
+  email varchar(255) UNIQUE,
+  password varchar(255)
 );
 
-create table ads(
+create table if not exists ads(
   id serial primary key,
   description text,
   sold boolean,

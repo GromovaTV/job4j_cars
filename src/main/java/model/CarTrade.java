@@ -7,13 +7,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cars")
 public class CarTrade {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
+
     @ManyToOne
     @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"))
     private Engine engine;
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Driver> drivers = new HashSet<>();
 
